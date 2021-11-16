@@ -29,4 +29,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		  FROM members
 		 WHERE no = #{no}
 	</delete>
+	<select id=" selectTop1" resultType="dto.Member">
+		SELECT a.no, a.id, a.name, a.grade, a.point
+		  FROM (SELECT no, id, name, grade, point
+		  		FROM members
+		  		ORDER BY point DESC) a
+		 WHERE ROWNUM = 1
+		  
+	</select>
 </mapper>

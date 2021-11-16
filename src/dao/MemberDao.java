@@ -65,4 +65,11 @@ public class MemberDao {
 		return result;
 	
 	}
+	
+	public Member selectTop1() {
+		SqlSession ss = factory.openSession();
+		Member member = ss.selectOne("dao.members.selectTop1");
+		ss.close();
+		return member;
+	}
 }
